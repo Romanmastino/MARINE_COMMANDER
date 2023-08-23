@@ -16,8 +16,8 @@
 
 //OUTPUTS
 
-    #define BOWTHRUSTER_LEFT_PIN 17
-    #define BOWTHRUSTER_RIGHT_PIN 16
+    #define BOWTHRUSTER_LEFT_PIN 17 //BLUE
+    #define BOWTHRUSTER_RIGHT_PIN 16//BLUE
     
     #define LEFT_ENGINE_FORWARD_PIN 33
     #define LEFT_ENGINE_REVERSE_PIN 34
@@ -31,6 +31,9 @@
     #define STERNTHRUSTER_RIGHT_PIN 14
     
     #define HORN_PIN 39
+    #define BUZZER 36
+
+    #define AUX_1 37
 
 
 

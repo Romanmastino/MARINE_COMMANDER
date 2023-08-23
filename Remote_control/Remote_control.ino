@@ -15,7 +15,6 @@ unsigned long debug_timer;
 void setup() 
 
 {
-
     pinMode(UP_PIN, INPUT);
     pinMode(DOWN_PIN, INPUT);
     pinMode(EAST_PIN, INPUT);
@@ -38,7 +37,23 @@ void setup()
     pinMode(STERNTHRUSTER_LEFT_PIN, OUTPUT);
     pinMode(STERNTHRUSTER_RIGHT_PIN, OUTPUT);
     pinMode(HORN_PIN, OUTPUT);
+    pinMode(BUZZER, OUTPUT);
+    pinMode(AUX_1, OUTPUT);
+    
+    
+    digitalWrite(LEFT_ENGINE_FORWARD_PIN, LOW);
+    digitalWrite(LEFT_ENGINE_REVERSE_PIN, LOW);
+    digitalWrite(RIGHT_ENGINE_FORWARD_PIN, LOW);
+    digitalWrite(RIGHT_ENGINE_REVERSE_PIN, LOW);
+
+    
+    digitalWrite(BUZZER, HIGH);
+    delay(1000);
+    digitalWrite(BUZZER, LOW);
     Serial.begin(115200);
+    Serial.println("PILOT-H STARTED");
+    
+
 
 }
 
@@ -61,35 +76,10 @@ void readInputs()
  HORN = digitalRead(R0_PIN);
 }
 
-void debug()
-{
-  if(debug_timer <= millis())
-  {
-  
-if(BOWTHRLEFT == 0)
-Serial.println("BOW THRUSTER LEFT");
-if(BOWTHRRIGHT == 0)
-Serial.println("BOW THRUSTER RIGHT");
-if(LEFTENGFWD == 0)
-Serial.println("LEFT ENGINE FORWARD");
-if(RIGHTENGFWD == 0)
-Serial.println("RIGHT ENGINE FORWARD");
-if(LEFTENGREV == 0)
-Serial.println("LEFT ENGINE REVERSE");
-if(RIGHTENGREV == 0)
-Serial.println("RIGHT ENGINE REVERSE");
-if(STERNTHRLEFT == 0)
-Serial.println("STERN THRUSTER LEFT");
-if(STERNTHRRIGHT == 0)
-Serial.println("STERN THRUSTER RIGHT");
-if(HORN == 0)
-Serial.println("HORN");
-debug_timer = millis() + 100;
-}
-}
+
 void controlOutputs()
 {
-
+  
     if(BOWTHRLEFT == 0)
     digitalWrite(BOWTHRUSTER_LEFT_PIN, HIGH);
     else
@@ -145,6 +135,33 @@ void controlOutputs()
     else
     digitalWrite(HORN_PIN, LOW);
     
+}
 
+
+void debug()
+{
+  if(debug_timer <= millis())
+  {
+  
+if(BOWTHRLEFT == 0)
+Serial.println("BOW THRUSTER LEFT");
+if(BOWTHRRIGHT == 0)
+Serial.println("BOW THRUSTER RIGHT");
+if(LEFTENGFWD == 0)
+Serial.println("LEFT ENGINE FORWARD");
+if(RIGHTENGFWD == 0)
+Serial.println("RIGHT ENGINE FORWARD");
+if(LEFTENGREV == 0)
+Serial.println("LEFT ENGINE REVERSE");
+if(RIGHTENGREV == 0)
+Serial.println("RIGHT ENGINE REVERSE");
+if(STERNTHRLEFT == 0)
+Serial.println("STERN THRUSTER LEFT");
+if(STERNTHRRIGHT == 0)
+Serial.println("STERN THRUSTER RIGHT");
+if(HORN == 0)
+Serial.println("HORN");
+debug_timer = millis() + 100;
+}
 }
     
